@@ -14,11 +14,11 @@ const TabIcon = ({
     className={`flex flex-row justify-center items-center rounded-full ${focused ? "bg-general-300" : ""}`}
   >
     <View
-      className={`rounded-full w-12 h-12 items-center justify-center ${focused ? "bg-general-400" : ""}`}
+      className={`rounded-full w-12 h-12 items-center justify-center ${focused ? "bg-blue-500" : ""}`}
     >
       <Image
         source={source}
-        tintColor="white"
+        style={{ tintColor: focused ? "white" : "#ccc" }}
         resizeMode="contain"
         className="w-7 h-7"
       />
@@ -35,18 +35,17 @@ export default function Layout() {
         tabBarInactiveTintColor: "white",
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: "#333333",
-          borderRadius: 50,
-          paddingBottom: 0, // ios only
-          overflow: "hidden",
+          backgroundColor: "#ffffff",
+          borderRadius: 80,
+          paddingBottom: 10, // Add padding for better alignment
+          paddingTop: 10, // Add padding for better alignment
           marginHorizontal: 20,
           marginBottom: 20,
-          height: 78,
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
+          height: 75,
           position: "absolute",
+          alignItems: "center", // Ensure items are centered vertically
         },
       }}
     >
@@ -57,6 +56,16 @@ export default function Layout() {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon source={icons.home} focused={focused} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="orders"
+        options={{
+          title: "Order",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} source={icons.order} />
           ),
         }}
       />
